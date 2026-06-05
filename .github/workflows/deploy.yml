@@ -2,7 +2,7 @@ name: Deploy portfolio to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main, master, Master]
   workflow_dispatch:
 
 # Allow the workflow to publish to GitHub Pages.
