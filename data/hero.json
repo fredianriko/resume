@@ -1,0 +1,23 @@
+{
+  "name": "Fredi Anriko",
+  "subtitle": "Versatile professional with expertise in software development, DevOps, and project management. Skilled in Node.js applications, CI/CD pipelines, cloud deployments (GKE & GCE), and building scalable, reliable systems.",
+  "profileImage": "/profilepict.jpeg?1768651157624",
+  "buttons": [
+    {
+      "label": "About Me",
+      "href": "#aboutme"
+    },
+    {
+      "label": "Career",
+      "href": "#career"
+    },
+    {
+      "label": "See My Work",
+      "href": "#projects"
+    },
+    {
+      "label": "Blog",
+      "href": "#blog"
+    }
+  ]
+}

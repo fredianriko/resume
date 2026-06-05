@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Technical Project Manager",
+    "company": "Golden Energy Mines",
+    "period": "January 2024 - Present",
+    "achievements": [
+      "Define project scope, objectives, and deliverables.",
+      "Develop detailed project plans, including timelines, resources, and budgets.",
+      "Identify project risks and create mitigation strategies.",
+      "Assemble and lead a project team, assigning tasks and responsibilities.",
+      "Maintain comprehensive project documentation, including plans, reports, and records.",
+      "Monitor project progress and make adjustments as necessary.",
+      "Ensure all project deliverables are completed and approved.",
+      "Prepare and deliver project reports to stakeholders."
+    ]
+  },
+  {
+    "title": "Backend Developer",
+    "company": "Sinarmas Mining",
+    "period": "February 2022 - December 2023",
+    "achievements": [
+      "Developed backend services with Koa.js and MySQL",
+      "Maintained legacy systems",
+      "Managed cloud deployments on GKE & GCE"
+    ]
+  }
+]

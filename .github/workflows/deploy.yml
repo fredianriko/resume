@@ -1,0 +1,64 @@
+name: Deploy portfolio to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Allow the workflow to publish to GitHub Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one deploy at a time; cancel older in-progress runs.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      # Project pages are served from /<repo>. For a user site
+      # (<user>.github.io) or a custom domain, set this to an empty string.
+      NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
+      # Absolute site URL used for SEO/OpenGraph metadata.
+      NEXT_PUBLIC_SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+      EXPORT: "true"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # The CMS (admin UI + API routes) is a local-only tool and cannot be
+      # part of a static export, so remove it before building.
+      - name: Remove local-only CMS before static export
+        run: rm -rf app/cms
+
+      - name: Build static site
+        run: npm run build
+
+      - name: Disable Jekyll processing
+        run: touch out/.nojekyll
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

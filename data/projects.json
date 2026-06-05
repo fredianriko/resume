@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Sicantik Superapps",
+    "description": "Government superapp platform for service orchestration and data integration.",
+    "tech": ["NestJS", "PostgreSQL", "Kafka", "GKE"],
+    "liveUrl": "https://google.com",
+    "repoUrl": "https://github.com/user/repo"
+  },
+  {
+    "title": "AI Training Executioner",
+    "description": "Backend service to orchestrate distributed AI training jobs.",
+    "tech": ["Node.js", "Docker", "Kubernetes"],
+    "liveUrl": "https://google.com",
+    "repoUrl": "https://github.com/user/repo"
+  }
+]

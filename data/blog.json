@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Another blog",
+    "story": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+    "author": "Fredi Anriko",
+    "createdAt": "2024-06-15T10:30:00Z",
+    "updatedAt": "2024-06-16T12:00:00Z"
+  },
+  {
+    "title": "Understanding Asynchronous JavaScript",
+    "story": "Asynchronous JavaScript is a powerful concept that allows developers to handle operations that take time to complete without blocking the main thread. This article explores callbacks, promises, and async/await syntax to manage asynchronous code effectively.",
+    "author": "Fredi Anriko",
+    "createdAt": "2024-06-15T10:30:00Z",
+    "updatedAt": "2024-06-16T12:00:00Z"
+  }
+]
