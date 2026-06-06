@@ -12,6 +12,12 @@
       "Monitor project progress and make adjustments as necessary.",
       "Ensure all project deliverables are completed and approved.",
       "Prepare and deliver project reports to stakeholders."
+    ],
+    "skills": [
+      "Project Planning",
+      "Stakeholder Management",
+      "Risk Management",
+      "Team Leadership"
     ]
   },
   {
@@ -22,6 +28,7 @@
       "Developed backend services with Koa.js and MySQL",
       "Maintained legacy systems",
       "Managed cloud deployments on GKE & GCE"
-    ]
+    ],
+    "skills": ["Node.js", "Koa.js", "MySQL", "GKE", "GCE", "CI/CD"]
   }
 ]

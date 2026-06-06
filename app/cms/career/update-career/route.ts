@@ -7,7 +7,8 @@ export async function POST(req: Request) {
   const denied = await requireAuth();
   if (denied) return denied;
 
-  const { index, title, company, period, achievements } = await req.json();
+  const { index, title, company, period, achievements, skills } =
+    await req.json();
 
   const data = readJson<CareerItem[]>("career.json", []);
 
@@ -15,7 +16,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid index" }, { status: 400 });
   }
 
-  data[index] = { title, company, period, achievements };
+  data[index] = { title, company, period, achievements, skills: skills ?? [] };
   writeJson("career.json", data);
 
   return NextResponse.json({ success: true });

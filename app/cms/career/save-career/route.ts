@@ -13,6 +13,7 @@ export async function POST(req: Request) {
     company: body.company,
     period: body.period,
     achievements: body.achievements,
+    skills: body.skills ?? [],
   };
 
   const existing = readJson<CareerItem[]>("career.json", []);

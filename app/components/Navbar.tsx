@@ -4,7 +4,11 @@ import { useEffect, useState } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { scrollToSection } from "./BackToHeroButton";
 import contact from "@/data/contact.json";
+import heroData from "@/data/hero.json";
+import type { HeroData } from "@/data/types";
 import { asset } from "../lib/asset";
+
+const hero = heroData as HeroData;
 
 const LINKS = [
   { label: "About", id: "aboutme" },
@@ -35,15 +39,20 @@ export function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors ${
         scrolled
-          ? "border-b border-slate-200 bg-white/80 backdrop-blur dark:border-slate-800 dark:bg-slate-950/80"
+          ? "border-b border-slate-200 bg-white/80 backdrop-blur dark:border-neutral-800 dark:bg-black/80"
           : "border-b border-transparent bg-transparent"
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <button
           onClick={() => scrollToSection("hero")}
-          className="text-lg font-bold tracking-tight text-slate-900 dark:text-white"
+          className="flex items-center gap-2 text-lg font-bold tracking-tight text-slate-900 dark:text-white"
         >
+          <img
+            src={asset(hero.profileImage)}
+            alt={hero.name}
+            className="h-8 w-8 rounded-full border border-slate-200 object-cover dark:border-neutral-700"
+          />
           Fredi<span className="text-blue-600">.</span>
         </button>
 
@@ -53,7 +62,7 @@ export function Navbar() {
             <button
               key={link.id}
               onClick={() => go(link.id)}
-              className="text-sm font-medium text-slate-600 transition hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400"
+              className="text-sm font-medium text-slate-600 transition hover:text-blue-600 dark:text-neutral-300 dark:hover:text-blue-400"
             >
               {link.label}
             </button>
@@ -77,7 +86,7 @@ export function Navbar() {
           <button
             aria-label="Toggle menu"
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-300 text-slate-700 dark:border-slate-700 dark:text-slate-200"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-300 text-slate-700 dark:border-neutral-700 dark:text-neutral-200"
           >
             {open ? "✕" : "☰"}
           </button>
@@ -86,13 +95,13 @@ export function Navbar() {
 
       {/* Mobile dropdown */}
       {open && (
-        <div className="border-t border-slate-200 bg-white px-6 py-4 md:hidden dark:border-slate-800 dark:bg-slate-950">
+        <div className="border-t border-slate-200 bg-white px-6 py-4 md:hidden dark:border-neutral-800 dark:bg-black">
           <div className="flex flex-col gap-3">
             {LINKS.map((link) => (
               <button
                 key={link.id}
                 onClick={() => go(link.id)}
-                className="text-left text-sm font-medium text-slate-600 dark:text-slate-300"
+                className="text-left text-sm font-medium text-slate-600 dark:text-neutral-300"
               >
                 {link.label}
               </button>

@@ -9,13 +9,13 @@ export async function POST(req: Request) {
 
   const body = (await req.json()) as AboutData;
 
-  if (!body.about || !Array.isArray(body.skills)) {
+  if (!body.about) {
     return NextResponse.json(
-      { success: false, error: "Invalid JSON structure" },
+      { success: false, error: "About text is required" },
       { status: 400 }
     );
   }
 
-  writeJson("aboutme.json", body);
+  writeJson("aboutme.json", { about: body.about });
   return NextResponse.json({ success: true });
 }

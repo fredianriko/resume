@@ -6,14 +6,14 @@ const projects = projectData as ProjectItem[];
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="bg-slate-50 py-24 dark:bg-slate-950">
+    <section id="projects" className="bg-slate-50 py-24 dark:bg-black">
       <div className="mx-auto max-w-6xl px-6">
         <h2 className="mb-12 text-center text-3xl font-bold text-slate-900 dark:text-white">
           Projects
         </h2>
 
         {projects.length === 0 && (
-          <p className="text-center text-slate-500 dark:text-slate-400">
+          <p className="text-center text-slate-500 dark:text-neutral-400">
             No projects yet.
           </p>
         )}
@@ -21,12 +21,12 @@ export default function ProjectsSection() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {projects.map((project, index) => (
             <Reveal key={index} delay={index * 0.05}>
-              <div className="group h-full rounded-2xl border border-slate-200 bg-white p-8 text-left transition-all hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/10 dark:border-slate-700 dark:bg-slate-800/50 dark:hover:border-blue-500">
+              <div className="group h-full rounded-2xl border border-slate-200 bg-white p-8 text-left transition-all hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/10 dark:border-neutral-700 dark:bg-neutral-800/50 dark:hover:border-blue-500">
                 <h3 className="mb-3 text-2xl font-semibold text-slate-900 dark:text-white">
                   {project.title}
                 </h3>
 
-                <p className="mb-6 leading-relaxed text-slate-600 dark:text-slate-300">
+                <p className="mb-6 leading-relaxed text-slate-600 dark:text-neutral-300">
                   {project.description}
                 </p>
 
@@ -34,7 +34,7 @@ export default function ProjectsSection() {
                   {project.tech.map((t, i) => (
                     <span
                       key={i}
-                      className="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700 dark:bg-slate-700/70 dark:text-slate-200"
+                      className="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700 dark:bg-neutral-700/70 dark:text-neutral-200"
                     >
                       {t}
                     </span>
@@ -58,7 +58,7 @@ export default function ProjectsSection() {
                       href={project.repoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-medium text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+                      className="font-medium text-slate-600 transition hover:text-slate-900 dark:text-neutral-300 dark:hover:text-white"
                     >
                       💻 Source Code
                     </a>

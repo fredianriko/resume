@@ -14,7 +14,6 @@ export interface HeroData {
 
 export interface AboutData {
   about: string;
-  skills: string[];
 }
 
 export interface CareerItem {
@@ -22,6 +21,7 @@ export interface CareerItem {
   company: string;
   period: string;
   achievements: string[];
+  skills: string[];
 }
 
 export interface ProjectItem {

@@ -1,12 +1,3 @@
 {
-  "about": "I am a versatile professional with expertise in software development, DevOps, and project management. \n\nI specialize in building scalable, reliable, and cloud-ready applications. My experience includes managing Node.js applications (Koa.js, Express.js), implementing CI/CD pipelines using GitLab CI, and deploying applications on Google Kubernetes Engine (GKE) and Google Compute Engine (GCE). \n\nI also focus on software architecture, code reviews, mentoring team members, and ensuring projects are delivered efficiently",
-  "skills": [
-    "Backend & Full-Stack Development",
-    "Node.js (Koa.js, Express.js)",
-    "DevOps & CI/CD (GitLab CI)",
-    "Cloud Deployments (GKE, GCE)",
-    "Software Architecture & Code Reviews",
-    "Team Mentoring & Project Management",
-    "Typescript"
-  ]
+  "about": "I am a versatile professional with expertise in software development, DevOps, and project management. \n\nI specialize in building scalable, reliable, and cloud-ready applications. My experience includes managing Node.js applications (Koa.js, Express.js), implementing CI/CD pipelines using GitLab CI, and deploying applications on Google Kubernetes Engine (GKE) and Google Compute Engine (GCE). \n\nI also focus on software architecture, code reviews, mentoring team members, and ensuring projects are delivered efficiently"
 }

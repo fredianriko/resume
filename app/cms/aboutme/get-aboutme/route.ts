@@ -4,6 +4,6 @@ import type { AboutData } from "@/data/types";
 
 export async function GET() {
   return NextResponse.json(
-    readJson<AboutData>("aboutme.json", { about: "", skills: [] })
+    readJson<AboutData>("aboutme.json", { about: "" })
   );
 }

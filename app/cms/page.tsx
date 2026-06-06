@@ -47,14 +47,13 @@ export default function CMSPage() {
   // ===== ABOUT FORM =====
   const [aboutText, setAboutText] = useState("");
   const [aboutError, setAboutError] = useState("");
-  const [skills, setSkills] = useState<string[]>([]);
-  const [newSkill, setNewSkill] = useState("");
 
   // ===== CAREER FORM =====
   const [title, setTitle] = useState("");
   const [company, setCompany] = useState("");
   const [period, setPeriod] = useState("");
   const [achievements, setAchievements] = useState("");
+  const [careerSkills, setCareerSkills] = useState("");
   const [careerError, setCareerError] = useState("");
 
   // ===== PROJECT FORM =====
@@ -89,16 +88,6 @@ export default function CMSPage() {
 
   function isEmpty(value: string) {
     return !value || value.trim().length === 0;
-  }
-
-  function addSkill() {
-    if (!newSkill.trim()) return;
-    setSkills([...skills, newSkill.trim()]);
-    setNewSkill("");
-  }
-
-  function removeSkill(index: number) {
-    setSkills(skills.filter((_, i) => i !== index));
   }
 
   // SIDE EFFECT
@@ -196,7 +185,6 @@ export default function CMSPage() {
     const data = await res.json();
 
     setAboutText(data?.about || "");
-    setSkills(data?.skills || []);
   }
 
   async function loadCareer() {
@@ -276,16 +264,10 @@ export default function CMSPage() {
       return;
     }
 
-    if (skills.length === 0) {
-      setAboutError("Please add at least one skill.");
-      return;
-    }
-
     setAboutError("");
 
     const payload = {
       about: aboutText,
-      skills: skills,
     };
 
     await fetch("/cms/aboutme/save-aboutme", {
@@ -315,7 +297,11 @@ export default function CMSPage() {
       title,
       company,
       period,
-      achievements: achievements.split("\n"),
+      achievements: achievements.split("\n").filter((l) => l.trim()),
+      skills: careerSkills
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean),
       index: editingCareerIndex,
     };
 
@@ -332,6 +318,7 @@ export default function CMSPage() {
     setCompany("");
     setPeriod("");
     setAchievements("");
+    setCareerSkills("");
     setEditingCareerIndex(null);
 
     loadCareer();
@@ -490,6 +477,7 @@ export default function CMSPage() {
     setCompany("");
     setPeriod("");
     setAchievements("");
+    setCareerSkills("");
     setCareerError("");
     setEditingCareerIndex(null);
   }
@@ -827,54 +815,6 @@ export default function CMSPage() {
                   onChange={(e) => setAboutText(e.target.value)}
                 />
 
-                {/* Skills Input */}
-                <div>
-                  <label className="font-semibold block mb-2">Key Skills</label>
-
-                  <div className="flex gap-2">
-                    <input
-                      className="flex-1 p-3 border rounded"
-                      placeholder="Add skill (e.g. Backend Development)"
-                      value={newSkill}
-                      onChange={(e) => setNewSkill(e.target.value)}
-                    />
-
-                    <button
-                      type="button"
-                      onClick={addSkill}
-                      className="px-6 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 cursor-pointer"
-                    >
-                      Add
-                    </button>
-                  </div>
-                </div>
-
-                {/* Skills List */}
-                <div className="space-y-2">
-                  {skills.map((skill, index) => (
-                    <div
-                      key={index}
-                      className="flex justify-between items-center border rounded p-3 bg-gray-50"
-                    >
-                      <span>{skill}</span>
-
-                      <button
-                        type="button"
-                        onClick={() => removeSkill(index)}
-                        className="text-red-600 hover:text-red-800 font-bold cursor-pointer"
-                      >
-                        ✕
-                      </button>
-                    </div>
-                  ))}
-
-                  {skills.length === 0 && (
-                    <p className="text-gray-500 text-sm">
-                      No skills added yet.
-                    </p>
-                  )}
-                </div>
-
                 <button className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800 cursor-pointer">
                   Save About Me
                 </button>
@@ -921,6 +861,13 @@ export default function CMSPage() {
                   onChange={(e) => setAchievements(e.target.value)}
                 />
 
+                <input
+                  className="w-full p-3 border rounded"
+                  placeholder="Key skills (comma-separated, e.g. Node.js, MySQL, GKE)"
+                  value={careerSkills}
+                  onChange={(e) => setCareerSkills(e.target.value)}
+                />
+
                 <button className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800 cursor-pointer">
                   {editingCareerIndex === null
                     ? "Save Career"
@@ -954,6 +901,7 @@ export default function CMSPage() {
                           setCompany(item.company);
                           setPeriod(item.period);
                           setAchievements(item.achievements.join("\n"));
+                          setCareerSkills((item.skills || []).join(", "));
                         }}
                       >
                         Edit
